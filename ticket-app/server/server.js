@@ -3,7 +3,13 @@ const app = express();
 mongodb = require("mongodb");
 cliente = mongodb.MongoClient; //En cliente ya tenemos nuestro acceso a la BD.
 
-const uri = "mongodb+srv://bddosutn:<passoword>@cluster0.bbrw0lt.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://bddosutn:admin123@cluster0.bbrw0lt.mongodb.net/?retryWrites=true&w=majority"
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 cliente.connect(uri, (err, client) => 
 { 
@@ -20,15 +26,24 @@ cliente.connect(uri, (err, client) =>
         next();
     }) 
 
-    let tickets = client.db('TP_BD_II').collection("tickets");
+    let tickets = client.db('base_datos_II').collection("usuarios");
     let clientes = client.db('TP_BD_II').collection("clientes");
     let empleados = client.db('TP_BD_II').collection("empleados");
     let equipos = client.db('TP_BD_II').collection("equipos");
 
     // TICKETS
     app.get("/tickets", (req, res) => { 
-        res.json(getAll(tickets)), 
-        err => { if(err) console.log(err) }
+        tickets.find().toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+
+        // data = getAll(tickets) 
+        ,err => { if(err) console.log(err) }
     });
         //res.json(result); //No puedo tener 2 respuestas.
 
@@ -84,6 +99,7 @@ function getAll(collection){
     let datos = [];
 
     collection.find().forEach( item => { datos.push(item) });
+    console.log(datos);
     return datos;
 }
 
