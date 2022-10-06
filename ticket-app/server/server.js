@@ -26,7 +26,7 @@ cliente.connect(uri, (err, client) =>
         next();
     }) 
 
-    let tickets = client.db('base_datos_II').collection("usuarios");
+    let tickets = client.db('TP_BD_II').collection("tickets");
     let clientes = client.db('TP_BD_II').collection("clientes");
     let empleados = client.db('TP_BD_II').collection("empleados");
     let equipos = client.db('TP_BD_II').collection("equipos");
