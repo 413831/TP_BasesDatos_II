@@ -4,6 +4,7 @@ import Ticket from './components/Ticket';
 import { useState } from "react";
 
 const GET_TICKETS = "tickets";
+const GET_TICKETS_FIX = "tickets/fix";
 
 function App() {
 
@@ -11,8 +12,16 @@ function App() {
   const [tickets, setTickets] = useState(null);
 
   // Request
-  const reqApi = async () =>{
+  const getTickets = async () =>{
     const api = await fetch(`http://localhost:3000/${GET_TICKETS}`)
+    const data = await api.json();
+
+    setTickets(data);
+    // console.log(data);
+  }
+
+  const getTicketsFix = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_TICKETS_FIX}`)
     const data = await api.json();
 
     setTickets(data);
@@ -29,7 +38,7 @@ function App() {
 
         {tickets ? (
           <Ticket tickets={tickets}></Ticket>
-        ):  (<button onClick={reqApi}>Obtener tickets</button>)}
+        ):  (<button onClick={getTickets}>Obtener tickets</button>)}
 
         
         <h1>Mi primer app</h1>

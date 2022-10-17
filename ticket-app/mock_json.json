@@ -1,0 +1,63 @@
+[
+    {
+        "id":{"$oid":"6344a5b5fc13ae598e000000"},
+        "agent":{
+            "id":"ABC",
+            "name":"Juana",
+            "last_name":"Perez"
+        },
+        "title":"Desperfecto equipo",
+        "priority":"1",
+        "tags":["equipo","fix","reposicion","recambio"],
+        "client":{
+            "_id":"1",
+            "name":"Pepito",
+            "last_name":"Gonzalez",
+            "address_name":"Calle",
+            "address_number":"1223",
+            "phone_number":"555555555"
+        },
+        "area":"Soporte"
+    },
+    {
+        "id":{"$oid":"6344a5b5fc13ae598e000001"},
+        "agent":{
+            "id":"ABC",
+            "name":"Juana",
+            "last_name":"Perez"
+        },
+        "title":"Desperfecto equipo",
+        "priority":"3",
+        "tags":["equipo","fix","reposicion","recambio"],
+        "client":{
+            "_id":"1",
+            "name":"Pepito",
+            "last_name":"Gonzalez",
+            "address_name":"Calle",
+            "address_number":"1223",
+            "phone_number":"555555555"
+        },
+        "area":"Soporte"
+    },
+    {
+        "id":{"$oid":"6344a5b5fc13ae598e000002"},
+        "agent":{
+            "id":"ABC",
+            "name":"Juana",
+            "last_name":"Perez"
+        },
+        "title":"Desperfecto equipo",
+        "priority":"2",
+        "tags":["equipo","fix","reposicion","recambio"],
+        "client":{
+            "_id":"1",
+            "name":"Pepito",
+            "last_name":"Gonzalez",
+            "address_name":"Calle",
+            "address_number":"1223",
+            "phone_number":"555555555"
+        },
+        "area":"Soporte"
+    }
+
+]

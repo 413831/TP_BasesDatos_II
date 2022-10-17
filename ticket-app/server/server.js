@@ -41,24 +41,33 @@ cliente.connect(uri, (err, client) =>
                 res.json(result);
             }
         })
-
-        // data = getAll(tickets) 
         ,err => { if(err) console.log(err) }
     });
         //res.json(result); //No puedo tener 2 respuestas.
 
-    app.get("/tickets/:id", (req, res) => {
-        console.log(req);
-        res.json(get(tickets, req.params.id))
-        , err => {
-            if(err){
-                console.log(err);
-
+    app.get("/tickets/fix", (req, res) => {
+        tickets.find({tags:{$in:["fix"]}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
             }
-            res.json(datos);
-    }})
-        //res.json({rta: "Hola"}); //No puedo tener 2 respuestas.
+        })
+        ,err => { if(err) console.log(err) }
+    })
 
+    app.get("/tickets/servicios", (req, res) => {
+        tickets.find({area:{$eq:"Servicios"}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
 
     app.get("/usuarios/agregar", (req, res) => {
         //let usu = JSON.parse(req.params.usuario);
