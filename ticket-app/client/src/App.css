@@ -24,6 +24,35 @@
   color: white;
 }
 
+.App-body {
+  background-color: #5531b9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Button{
+  border: none;
+  border-radius: 0%;
+  background-color: rgb(252, 248, 191);
+  color: black;
+  font-size: large;
+  padding: 5em 10em 5em 10em;
+}
+
+.Cell{
+  margin: auto;
+  display:flexbox;
+  justify-items: center;
+  background-color: rgb(59, 10, 104);
+  font-size: small;
+
+}
+
 .App-link {
   color: #61dafb;
 }

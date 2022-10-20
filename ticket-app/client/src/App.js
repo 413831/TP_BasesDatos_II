@@ -32,29 +32,54 @@ function App() {
   return (
 
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div>
+        <header className="App-header">
+          <h1>Multichannel Portal</h1>
+          <h2><code>API</code></h2>
+          <img src={logo} className="App-logo" alt="logo" />
+        </header>
        
+      </div>
+      <div className="App-body">
+      
+        <table>
+          <tr >
+            <td className='Cell'>
+              <button onClick={getTickets}  className="Button">Obtener tickets</button>
+            </td>
+            <td className='Cell'>
+             
+              {tickets ? (
+              <Ticket tickets={tickets}></Ticket>
+                ):   <textarea disabled="true" value={"..."}></textarea>}
+            </td>
+          </tr>
+          <tr >
+            <td className='Cell'>
+              <button onClick={getTickets}  className="Button">Obtener tickets</button>
+            </td>
+            <td className='Cell'>
+             
+              {tickets ? (
+              <Ticket tickets={tickets}></Ticket>
+                ):   <textarea disabled="true" value={"..."}></textarea>}
+            </td>
+          </tr>
+          <tr >
+            <td className='Cell'>
+              <button onClick={getTickets}  className="Button">Obtener tickets</button>
+            </td>
+            <td className='Cell'>
+             
+              {tickets ? (
+              <Ticket tickets={tickets}></Ticket>
+                ):   <textarea disabled="true" value={"..."}></textarea>}
+            </td>
+          </tr>
+        </table>
 
-        {tickets ? (
-          <Ticket tickets={tickets}></Ticket>
-        ):  (<button onClick={getTickets}>Obtener tickets</button>)}
-
-        
-        <h1>Mi primer app</h1>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        
-      </header>
+     
+      </div>
     </div>
   );
 }
