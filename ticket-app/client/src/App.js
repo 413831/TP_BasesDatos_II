@@ -5,11 +5,14 @@ import { useState } from "react";
 
 const GET_TICKETS = "tickets";
 const GET_TICKETS_FIX = "tickets/fix";
+const GET_TICKETS_SERVICIOS = "tickets/servicios";
 
 function App() {
 
   // Variables
   const [tickets, setTickets] = useState(null);
+  const [ticketsFix, setTicketsFix] = useState(null);
+  const [ticketsServicios, setTicketsServicios] = useState(null);
 
   // Request
   const getTickets = async () =>{
@@ -24,9 +27,20 @@ function App() {
     const api = await fetch(`http://localhost:3000/${GET_TICKETS_FIX}`)
     const data = await api.json();
 
-    setTickets(data);
+    setTicketsFix(data);
     // console.log(data);
   }
+
+  const getTicketsServicios = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_TICKETS_SERVICIOS}`)
+    const data = await api.json();
+
+    setTicketsServicios(data);
+    // console.log(data);
+  }
+
+  
+ 
 
   // UI
   return (
@@ -56,23 +70,23 @@ function App() {
           </tr>
           <tr >
             <td className='Cell'>
-              <button onClick={getTickets}  className="Button">Obtener tickets</button>
+              <button onClick={getTicketsFix}  className="Button">Obtener tickets de fix</button>
             </td>
             <td className='Cell'>
              
-              {tickets ? (
-              <Ticket tickets={tickets}></Ticket>
+              {ticketsFix ? (
+              <Ticket tickets={ticketsFix}></Ticket>
                 ):   <textarea disabled="true" value={"..."}></textarea>}
             </td>
           </tr>
           <tr >
             <td className='Cell'>
-              <button onClick={getTickets}  className="Button">Obtener tickets</button>
+              <button onClick={getTicketsServicios}  className="Button">Obtener tickets servicios</button>
             </td>
             <td className='Cell'>
              
-              {tickets ? (
-              <Ticket tickets={tickets}></Ticket>
+              {ticketsServicios ? (
+              <Ticket tickets={ticketsServicios}></Ticket>
                 ):   <textarea disabled="true" value={"..."}></textarea>}
             </td>
           </tr>
