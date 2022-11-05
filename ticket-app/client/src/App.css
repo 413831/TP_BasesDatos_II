@@ -37,15 +37,17 @@
 
 .Button{
   border: none;
+  padding: 2em;
   border-radius: 0%;
-  background-color: rgb(252, 248, 191);
+  background-color: rgb(214, 238, 214);
   color: black;
   font-size: large;
-  padding: 5em 10em 5em 10em;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .Cell{
-  margin: auto;
+  padding: 5em;
   display:flexbox;
   justify-items: center;
   background-color: rgb(59, 10, 104);

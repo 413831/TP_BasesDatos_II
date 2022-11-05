@@ -1,117 +1,119 @@
 [
     {
-        "agent":{
-            "id":"ABC",
-            "name":"Marcelo",
-            "last_name":"Perez"
+        "state":"in progress",
+        "title":"Instalación nuevo equipo",
+        "description":"Se requiere asistencia técnica para instalación en domicilio de nuevo equipo para nuevo cliente",
+        "tags":["instalacion","nuevo","soporte"],
+        "priority": 1,
+        "users_log":[{
+            "name": "Pepito",
+            "personal_id": "92543123"
         },
-        "title":"Desperfecto equipo",
-        "priority":"1",
-        "tags":["equipo","fix","reposicion","recambio"],
-        "client":{
-            "_id":"1",
-            "name":"Pepito",
-            "last_name":"Gonzalez",
-            "address_name":"Calle",
-            "address_number":"1223",
-            "phone_number":"555555555"
+        {
+            "name": "Maria",
+            "personal_id": "33445432"
+        }],
+        "customer":{
+            "name":"Fernando",
+            "surname":"Paredes",
+            "personal_id":"35666222"
         },
-        "area":"Soporte",
-        "active":true
+        "current_area":"servicio_tecnico",
+        "view_counter":11,
+        "creation_date": "2020-05-18T14:10:30.000Z"
+        
     },
     {
-        "agent":{
-            "id":"ABC",
-            "name":"Juana",
-            "last_name":"Perez"
+        "state":"resolved",
+        "title":"Recambio de equipo",
+        "description":"Se requiere cambio de equipo por fallas en conexión solicitado por area de servicio al cliente",
+        "tags":["fix","change","soporte"],
+        "priority": 2,
+        "users_log":[{
+            "name": "Pepito",
+            "personal_id": "92543123"
         },
-        "title":"Instalación",
-        "priority":"1",
-        "tags":["equipo","nuevo","instalacion"],
-        "client":{
-            "_id":"1",
-            "name":"Mercedes",
-            "last_name":"Paredes",
-            "address_name":"Calle",
-            "address_number":"1551",
-            "phone_number":"355431223"
+        {
+            "name": "Maria",
+            "personal_id": "33445432"
+        }],
+        "customer":{
+            "name":"Manuel",
+            "surname":"Lopez",
+            "personal_id":"38666222"
         },
-        "area":"Servicios"
+        "current_area":"servicio_posventa",
+        "view_counter":23,
+        "creation_date": "2020-05-18T14:10:30.000Z"
     },
     {
-        "agent":{
-            "id":"JPE",
-            "name":"Juan",
-            "last_name":"Perez"
+        "state":"active",
+        "title":"Revisión de equipo",
+        "description":"Se requiere revisión de fallas de conexión en equipo instalado en domicilio",
+        "tags":["review","tech","soporte"],
+        "priority": 1,
+        "users_log":[{
+            "name": "Pepito",
+            "personal_id": "92543123"
         },
-        "title":"Instalación",
-        "priority":"2",
-        "tags":["equipo","nuevo","instalacion"],
-        "client":{
-            "_id":"1",
-            "name":"Mercedes",
-            "last_name":"Paredes",
-            "address_name":"Calle",
-            "address_number":"1551",
-            "phone_number":"1355431223"
+        {
+            "name": "Maria",
+            "personal_id": "33445432"
+        }],
+        "customer":{
+            "name":"Maria",
+            "surname":"Gonzalez",
+            "personal_id":"32666222"
         },
-        "area":"Servicios"
+        "current_area":"servicio_tecnico",
+        "view_counter":13,
+        "creation_date": "2020-05-18T14:10:30.000Z"
+        
     },
     {
-        "agent":{
-            "id":"ABC",
-            "name":"Juana",
-            "last_name":"Perez"
+        "state":"discarded",
+        "title":"Retiro de equipo por baja",
+        "description":"Se requiere retiro de equipo por baja solicitada por cliente",
+        "tags":["review","tech","servicios"],
+        "priority": 1,
+        "users_log":[{
+            "name": "Pepito",
+            "personal_id": "92543123"
         },
-        "title":"Desperfecto equipo",
-        "priority":"1",
-        "tags":["equipo","fix","reposicion","recambio"],
-        "client":{
-            "_id":"1",
-            "name":"Pepito",
-            "last_name":"Gonzalez",
-            "address_name":"Calle",
-            "address_number":"1223",
-            "phone_number":"555555555"
+        {
+            "name": "Maria",
+            "personal_id": "33445432"
+        }],
+        "customer":{
+            "name":"Maria",
+            "surname":"Nieves",
+            "personal_id":"95666222"
         },
-        "area":"Soporte"
+        "current_area":"atencion_cliente",
+        "view_counter":5,
+        "creation_date": "2020-05-18T14:10:30.000Z"
     },
     {
-        "agent":{
-            "id":"MAG",
-            "name":"Marcelo",
-            "last_name":"Gonzalez"
+        "state":"active",
+        "title":"Cambio de plan",
+        "description":"Se requiere cambio de plan a pedido de cliente",
+        "tags":["review","customer","quote"],
+        "priority": 1,
+        "users_log":[{
+            "name": "Pepito",
+            "personal_id": "92543123"
         },
-        "title":"Instalación",
-        "priority":"2",
-        "tags":["equipo","instalacion"],
-        "client":{
-            "_id":"1",
-            "name":"Agustina",
-            "last_name":"Ferreyra",
-            "address_name":"Calle",
-            "address_number":"2432",
-            "phone_number":"342342342"
+        {
+            "name": "Maria",
+            "personal_id": "33445432"
+        }],
+        "customer":{
+            "name":"Laura",
+            "surname":"Gomez",
+            "personal_id":"25666222"
         },
-        "area":"Servicios"
-    },
-    {
-        "agent":{
-            "id":"MAG",
-            "name":"Marcelo",
-            "last_name":"Gonzalez"
-        },
-        "title":"Instalacion",
-        "priority":"2",
-        "tags":["equipo","nuevo","instalacion"],
-        "client":{
-            "_id":"1",
-            "name":"Agustin",
-            "last_name":"Larussi",
-            "address_name":"Calle",
-            "address_number":"2313",
-            "phone_number":"1234353344"
-        },
-        "area":"Servicios"
+        "current_area":"atencion_cliente",
+        "view_counter":8,
+        "creation_date": "2020-05-18T14:10:30.000Z"
     }
 ]

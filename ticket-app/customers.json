@@ -1,0 +1,85 @@
+[
+    {
+        "name":"Fernando",
+        "surname":"Paredes",
+        "personal_id":"35666222",
+        "date_of_birth":"12/03/1999",
+        "contact_info":{
+            "phone_number": 1665423454,
+            "email": "mail1@mail.com",
+            "city_id": "BA01",
+            "address_name": "Humboldt",
+            "address_number":2552
+        },
+        "location":{},
+        "selected_plan":"normal",
+        "subscription_date": "03/03/2022"
+    },
+    {
+        "name":"Manuel",
+        "surname":"Lopez",
+        "personal_id":"38666222",
+        "date_of_birth":"12/03/1993",
+        "contact_info":{
+            "phone_number": 1665423454,
+            "email": "mail2@mail.com",
+            "city_id": "BA01",
+            "address_name": "Honduras",
+            "address_number":2554
+
+        },
+        "location":{},
+        "selected_plan":"normal",
+        "subscription_date": "03/05/2022"
+    },
+    {
+        "name":"Maria",
+        "surname":"Gonzalez",
+        "personal_id":"32666222",
+        "date_of_birth":"25/06/1999",
+        "contact_info":{
+            "phone_number": 1665423454,
+            "email": "mail3@mail.com",
+            "city_id": "AVELL",
+            "address_name": "Av.Belgrano",
+            "address_number":1232
+        },
+        "location":{},
+        "selected_plan":"super_pack",
+        "subscription_date": "13/07/2022"
+    },
+    {
+        "name":"Maria",
+        "surname":"Nieves",
+        "personal_id":"95666222",
+        "date_of_birth":"25/08/1997",
+        "contact_info":{
+            "phone_number": 1665423454,
+            "email": "mail4@mail.com",
+            "city_id": "OLIV",
+            "address_name": "Italias",
+            "address_number":242
+
+        },
+        "location":{},
+        "selected_plan":"super_pack",
+        "subscription_date": "04/03/2022"
+    },
+    {
+        "name":"Laura",
+        "surname":"Gomez",
+        "personal_id":"25666222",
+        "date_of_birth":"25/11/1996",
+        "contact_info":{
+            "phone_number": 1665423454,
+            "email": "mail5@mail.com",
+            "city_id": "BA01",
+            "address_name": "Cochabamba",
+            "address_number":354
+
+        },
+        "location":{},
+        "selected_plan":"super_pack_full",
+        "subscription_date": "05/03/2022"
+    }
+]

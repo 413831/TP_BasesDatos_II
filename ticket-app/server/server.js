@@ -69,33 +69,59 @@ cliente.connect(uri, (err, client) =>
         ,err => { if(err) console.log(err) }
     })
 
+    app.get("/tickets/high_priority", (req, res) => {
+        tickets.find({prority:{$lt:2}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
+    app.get("/tickets/high_priority_tech", (req, res) => {
+        tickets.find({$and:[{prority:{$lt:2}},{current_area:"servicio_tecnico"}]}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
+    app.get("/tickets/high_priority_views", (req, res) => {
+        tickets.find({$and:[{prority:{$lt:2}},{view_counter:{$gt:10}}]}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
+    app.get("/tickets/low_priority", (req, res) => {
+        tickets.find({prority:{$gte:2}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
     app.get("/usuarios/agregar", (req, res) => {
         //let usu = JSON.parse(req.params.usuario);
         let usu = usuarios.insert({usuario: "pepe", email: "pepe@pepe.com", clave: "123", foto: "miFoto.jpg"});
         res.json(usu);
     });
-
-    app.get("/usuarios/listar/:nombre", (req, res) => {
-        let arrayUsu = [];
-        let nombre = req.params.nombre;
-        usuarios.find({usuario: nombre}).forEach(item => {
-            arrayUsu.push(item);
-        }, err => {
-            if(err){
-                console.log(err);
-            }
-            res.json(arrayUsu);
-        })
-    });
-
-    app.get("/listado/:persona/:apellido", (req, res) => {
-        console.log(req.params.persona, req.params.apellido);
-        res.json({rta: "Hola"});
-    });
-
-    /*app.post("/", (req, res) => {
-        res.json({rta: "Hola"});
-    });*/
 
     app.listen(3000, () => {
         console.log("Servidor escuchando en puerto 3000");
