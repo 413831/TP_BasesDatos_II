@@ -3,7 +3,7 @@ const app = express();
 mongodb = require("mongodb");
 cliente = mongodb.MongoClient; //En cliente ya tenemos nuestro acceso a la BD.
 
-const uri = "mongodb+srv://bddosutn:admin123@cluster0.bbrw0lt.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://bddosutn:------@cluster0.bbrw0lt.mongodb.net/?retryWrites=true&w=majority"
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
