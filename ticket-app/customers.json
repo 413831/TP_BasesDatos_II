@@ -11,8 +11,15 @@
             "address_name": "Humboldt",
             "address_number":2552
         },
-        "location":{},
+        "location":{
+            "type":"Point",
+            "coordinates":[
+                -58.433658732818685,
+                -34.583381533448204
+            ]
+        },
         "selected_plan":"normal",
+        "packs_extra":["sports","music","arts"],
         "subscription_date": "03/03/2022"
     },
     {
@@ -28,8 +35,15 @@
             "address_number":2554
 
         },
-        "location":{},
+        "location":{
+            "type":"Point",
+            "coordinates":[
+                -58.42376258265965,
+                -34.593179988829505
+            ]
+        },
         "selected_plan":"normal",
+        "packs_extra":["sports","music","arts"],
         "subscription_date": "03/05/2022"
     },
     {
@@ -44,7 +58,13 @@
             "address_name": "Av.Belgrano",
             "address_number":1232
         },
-        "location":{},
+        "location":{
+            "type":"Point",
+            "coordinates":[
+                -58.36445130747077,
+                -34.6672500797407
+            ]
+        },
         "selected_plan":"super_pack",
         "subscription_date": "13/07/2022"
     },
@@ -57,12 +77,19 @@
             "phone_number": 1665423454,
             "email": "mail4@mail.com",
             "city_id": "OLIV",
-            "address_name": "Italias",
+            "address_name": "Entre Rios",
             "address_number":242
 
         },
-        "location":{},
+        "location":{
+            "type":"Point",
+            "coordinates":[
+                -58.49271520017082,
+                -34.51367526720563
+            ]
+        },
         "selected_plan":"super_pack",
+        "packs_extra":["sports","music","streaming"],
         "subscription_date": "04/03/2022"
     },
     {
@@ -78,7 +105,13 @@
             "address_number":354
 
         },
-        "location":{},
+        "location":{
+            "type":"Point",
+            "coordinates":[
+                -58.38899585293524,
+                -34.62387050283458
+            ]
+        },
         "selected_plan":"super_pack_full",
         "subscription_date": "05/03/2022"
     }

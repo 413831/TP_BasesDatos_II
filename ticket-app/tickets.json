@@ -16,7 +16,8 @@
         "customer":{
             "name":"Fernando",
             "surname":"Paredes",
-            "personal_id":"35666222"
+            "personal_id":"35666222",
+            "packs_extra":["sports","music","arts"]
         },
         "current_area":"servicio_tecnico",
         "view_counter":11,
@@ -40,7 +41,8 @@
         "customer":{
             "name":"Manuel",
             "surname":"Lopez",
-            "personal_id":"38666222"
+            "personal_id":"38666222",
+            "packs_extra":["sports","music","arts"]
         },
         "current_area":"servicio_posventa",
         "view_counter":23,
@@ -87,7 +89,8 @@
         "customer":{
             "name":"Maria",
             "surname":"Nieves",
-            "personal_id":"95666222"
+            "personal_id":"95666222",
+            "packs_extra":["sports","music","streaming"]
         },
         "current_area":"atencion_cliente",
         "view_counter":5,

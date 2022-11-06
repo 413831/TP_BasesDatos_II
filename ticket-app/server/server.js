@@ -3,7 +3,7 @@ const app = express();
 mongodb = require("mongodb");
 cliente = mongodb.MongoClient; //En cliente ya tenemos nuestro acceso a la BD.
 
-const uri = "mongodb+srv://bddosutn:-------@cluster0.bbrw0lt.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://bddosutn:admin123@cluster0.bbrw0lt.mongodb.net/?retryWrites=true&w=majority"
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -58,7 +58,7 @@ cliente.connect(uri, (err, client) =>
     })
 
     app.get("/tickets/servicios", (req, res) => {
-        tickets.find({area:{$eq:"Servicios"}}).toArray(function (err, result) {
+        tickets.find({current_area:{$eq:"servicio_tecnico"}}).toArray(function (err, result) {
             if (err) {
                 res.send(err);
             } else {
@@ -70,7 +70,7 @@ cliente.connect(uri, (err, client) =>
     })
 
     app.get("/tickets/high_priority", (req, res) => {
-        tickets.find({prority:{$lt:2}}).toArray(function (err, result) {
+        tickets.find({priority:{$lt:2}}).toArray(function (err, result) {
             if (err) {
                 res.send(err);
             } else {
@@ -82,7 +82,7 @@ cliente.connect(uri, (err, client) =>
     })
 
     app.get("/tickets/high_priority_tech", (req, res) => {
-        tickets.find({$and:[{prority:{$lt:2}},{current_area:"servicio_tecnico"}]}).toArray(function (err, result) {
+        tickets.find({$and:[{priority:{$lt:2}},{current_area:"servicio_tecnico"}]}).toArray(function (err, result) {
             if (err) {
                 res.send(err);
             } else {
@@ -94,7 +94,7 @@ cliente.connect(uri, (err, client) =>
     })
 
     app.get("/tickets/high_priority_views", (req, res) => {
-        tickets.find({$and:[{prority:{$lt:2}},{view_counter:{$gt:10}}]}).toArray(function (err, result) {
+        tickets.find({$and:[{priority:{$lt:2}},{view_counter:{$gt:10}}]}).toArray(function (err, result) {
             if (err) {
                 res.send(err);
             } else {
@@ -106,7 +106,7 @@ cliente.connect(uri, (err, client) =>
     })
 
     app.get("/tickets/low_priority", (req, res) => {
-        tickets.find({prority:{$gte:2}}).toArray(function (err, result) {
+        tickets.find({priority:{$gte:2}}).toArray(function (err, result) {
             if (err) {
                 res.send(err);
             } else {
@@ -117,10 +117,17 @@ cliente.connect(uri, (err, client) =>
         ,err => { if(err) console.log(err) }
     })
 
-    app.get("/usuarios/agregar", (req, res) => {
-        //let usu = JSON.parse(req.params.usuario);
-        let usu = usuarios.insert({usuario: "pepe", email: "pepe@pepe.com", clave: "123", foto: "miFoto.jpg"});
-        res.json(usu);
+    app.get("/customers/pack_normal", (req, res) => {
+        result = customers.count({selected_plan:"normal"})
+        res.json(result)
+        ,err => { if(err) console.log(err) }
+    });
+
+    app.get("/customers/pack_superpack_avellaneda", (req, res) => {
+        result = customers.aggregate([ { $match: { "selected_plan": "super_pack", "contact_info.city_id": "AVELL" } }, 
+                                    { $project: { "_id": 1, "name": 1, "surname": 1, "personal_id": 1, correo_electronico: "$contact_info.email" } }])
+        res.json(result)
+        ,err => { if(err) console.log(err) }
     });
 
     app.listen(3000, () => {

@@ -1,0 +1,116 @@
+[
+    {
+        "name":"Pasteur",
+        "contact_info":{
+            "phone_number": 244353543,
+            "city_id":"CABA",
+            "address_name":"Pasteur",
+            "address_number":2502
+        },
+        "areas":["servicio_tecnico","atencion_cliente"],
+        "staff_counter":28,
+        "coverage_area":{
+            "type": "Polygon",
+            "coordinates": [
+                [
+                  [
+                    -58.40594047612129,
+                    -34.60097246403976
+                  ],
+                  [
+                    -58.40594047612129,
+                    -34.61033456387772
+                  ],
+                  [
+                    -58.392767674755135,
+                    -34.61033456387772
+                  ],
+                  [
+                    -58.392767674755135,
+                    -34.60097246403976
+                  ],
+                  [
+                    -58.40594047612129,
+                    -34.60097246403976
+                  ]
+                ]
+              ]
+        }
+    },
+    {
+        "name":"Córdoba",
+        "contact_info":{
+            "phone_number": 244353543,
+            "city_id":"CABA",
+            "address_name":"Av.Cordoba 3252",
+            "address_number":2502
+        },
+        "areas":["servicio_tecnico"],
+        "staff_counter":42,
+        "coverage_area":{
+            "type": "Polygon",
+            "coordinates": [
+                [
+                  [
+                    -58.418381920723945,
+                    -34.58905347592813
+                  ],
+                  [
+                    -58.418381920723945,
+                    -34.60857917106298
+                  ],
+                  [
+                    -58.39494451834467,
+                    -34.60857917106298
+                  ],
+                  [
+                    -58.39494451834467,
+                    -34.58905347592813
+                  ],
+                  [
+                    -58.418381920723945,
+                    -34.58905347592813
+                  ]
+                ]
+            ]
+        }
+    },
+    {
+        "name":"Sarmiento",
+        "contact_info":{
+            "phone_number": 1765334534,
+            "city_id":"CABA",
+            "address_name":"Sarmiento",
+            "address_number":521
+        },
+        "areas":["atencion_cliente"],
+        "staff_counter":62,
+        "coverage_area":{
+            "type": "Polygon",
+            "coordinates": [
+                [
+                  [
+                    -58.395855638307566,
+                    -34.59444553093192
+                  ],
+                  [
+                    -58.395855638307566,
+                    -34.61943746334297
+                  ],
+                  [
+                    -58.369446542045395,
+                    -34.61943746334297
+                  ],
+                  [
+                    -58.369446542045395,
+                    -34.59444553093192
+                  ],
+                  [
+                    -58.395855638307566,
+                    -34.59444553093192
+                  ]
+                ]
+              ]
+        }
+    }
+]

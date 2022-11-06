@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Ticket from './components/Ticket';
+import Customer from './components/Customer';
 import { useState } from "react";
 
 const GET_TICKETS = "tickets";
@@ -10,6 +11,7 @@ const GET_TICKETS_HIGH_PRIORITY = "tickets/high_priority";
 const GET_TICKETS_HIGH_PRIORITY_TECH = "tickets/high_priority_tech";
 const GET_TICKETS_HIGH_PRIORITY_VIEWS = "tickets/high_priority_views";
 const GET_TICKETS_LOW_PRIORITY = "tickets/low_priority";
+const GET_CUSTOMERS_AVELLANEDA_SUPERPACK = "customers/pack_superpack_avellaneda";
 
 function App() {
 
@@ -21,6 +23,7 @@ function App() {
   const [ticketsAltaPrioridadTech, setTicketsAltaPrioridadTech] = useState(null);
   const [ticketsAltaPrioridadMasViews, setTicketsAltaPrioridadMasViews] = useState(null);
   const [ticketsBajaPrioridad, setTicketsBajaPrioridad] = useState(null);
+  const [customersAvellanedaSuperPack, setCustomersAvellanedaSuperPack] = useState(null);
 
   // Request
   const getTickets = async () =>{
@@ -70,6 +73,13 @@ function App() {
     const data = await api.json();
 
     setTicketsBajaPrioridad(data);
+  }
+
+  const getCustomersAvellanedaSuperPack = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_CUSTOMERS_AVELLANEDA_SUPERPACK}`)
+    const data = await api.json();
+
+    setCustomersAvellanedaSuperPack(data);
   }
  
 
@@ -161,6 +171,17 @@ function App() {
              
               {ticketsBajaPrioridad ? (
               <Ticket tickets={ticketsBajaPrioridad}></Ticket>
+                ):   <textarea disabled="true" value={"..."}></textarea>}
+            </td>
+          </tr>
+          <tr >
+            <td className='Cell'>
+              <button onClick={getCustomersAvellanedaSuperPack}  className="Button">Clientes de <code>Avellaneda con el plan Superpack</code></button>
+            </td>
+            <td className='Cell'>
+             
+              {customersAvellanedaSuperPack ? (
+              <Customer customers={customersAvellanedaSuperPack}></Customer>
                 ):   <textarea disabled="true" value={"..."}></textarea>}
             </td>
           </tr>
