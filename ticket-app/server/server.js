@@ -3,7 +3,7 @@ const app = express();
 mongodb = require("mongodb");
 cliente = mongodb.MongoClient; //En cliente ya tenemos nuestro acceso a la BD.
 
-const uri = "mongodb+srv://bddosutn:------@cluster0.bbrw0lt.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb+srv://bddosutn:admin123@cluster0.bbrw0lt.mongodb.net/?retryWrites=true&w=majority"
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -43,7 +43,6 @@ cliente.connect(uri, (err, client) =>
         })
         ,err => { if(err) console.log(err) }
     });
-        //res.json(result); //No puedo tener 2 respuestas.
 
     app.get("/tickets/fix", (req, res) => {
         tickets.find({tags:{$in:["fix"]}}).toArray(function (err, result) {
@@ -147,20 +146,28 @@ cliente.connect(uri, (err, client) =>
         centerData = centers.aggregate([{ $match: {name:"Pasteur"}},{ $project:{"coverage_area":1}}])
         let type;
         let coordinates;
+        let newCoordinates= [];
 
         await centerData.forEach(attribute => {
             console.log(`${attribute.coverage_area.type} : ${attribute.coverage_area.coordinates} `);
             type = attribute.coverage_area.type
             coordinates = attribute.coverage_area.coordinates
-        });
+            console.log(coordinates)
+        
+            
+    
+        });   
+        
 
+        result = customers.find({ location: { $geoWithin: { $geometry: { type: "Polygon", coordinates: coordinates } } } }).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                console.log(result)
+                res.json(result);
+            }
+        })
 
-
-        customers.find({ geometry:{ $geoWithin:{ $geometry: { type: type, coordinates: [[[-51, -29], [-71, -29], [-71, -33], [-51, -33],[-51, -29]]] } } }})
-        result = customers.aggregate([ { $match: { "selected_plan": "super_pack", "contact_info.city_id": "AVELL" } }, 
-                                    { $project: { "_id": 1, "name": 1, "surname": 1, "personal_id": 1, correo_electronico: "$contact_info.email" } }])  
-
-        res.json({})
         ,err => { if(err) console.log(err) }
     });
 
@@ -169,19 +176,3 @@ cliente.connect(uri, (err, client) =>
     });
 })
 
-// Handler methods
-
-function getAll(collection){
-    let datos = [];
-
-    collection.find().forEach( item => { datos.push(item) });
-    console.log(datos);
-    return datos;
-}
-
-function get(collection, filter){
-    let datos = [];
-
-    collection.find({filter}).forEach(item => { datos.push(item)});
-    return datos;
-}

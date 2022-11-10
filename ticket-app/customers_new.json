@@ -1,0 +1,51 @@
+[
+    {
+        "name":"Virginia",
+        "surname":"Esposito",
+        "personal_id":"25666222",
+        "date_of_birth":"12/03/1983",
+        "contact_info":{
+            "phone_number": 1433423454,
+            "email": "vesposito@mail.com",
+            "city_id": "BA01",
+            "address_name": "Junin",
+            "address_number":1552
+        },
+        "location":{
+            "type":"Point",
+            "coordinates":[
+                -58.39650194300671,
+                -34.60656578685697
+            ]
+        },
+        "selected_plan":"normal",
+        "packs_extra":["sports"],
+        "subscription_date": "15/03/2022"
+    },
+    {
+        "name":"Ana María",
+        "surname":"Luppi",
+        "personal_id":"19666222",
+        "date_of_birth":"12/03/1973",
+        "contact_info":{
+            "phone_number": 17624423454,
+            "email": "anluppi@mail.com",
+            "city_id": "BA01",
+            "address_name": "Azcuénaga",
+            "address_number":854
+
+        },
+        "location":{
+            "type":"Point",
+            "coordinates":[
+                -58.40055748239055,
+                -34.60798400880128
+            ]
+        },
+        "selected_plan":"normal",
+        "packs_extra":["sports","music","arts"],
+        "subscription_date": "03/07/2022"
+    }
+ 
+
+]
