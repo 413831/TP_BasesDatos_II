@@ -21,14 +21,14 @@ cliente.connect(uri, (err, client) =>
     // Instancia de Cliente de MongoDB
     //console.log(cliente); 
     
-    app.use((req, res, next) => {
+     app.use((req, res, next) => {
         console.log("middleware");
         next();
     }) 
 
     let tickets = client.db('TP_BD_II').collection("tickets");
-    let clientes = client.db('TP_BD_II').collection("clientes");
-    let empleados = client.db('TP_BD_II').collection("empleados");
+    let customers = client.db('TP_BD_II').collection("customers");
+    let centers = client.db('TP_BD_II').collection("centers");
     let equipos = client.db('TP_BD_II').collection("equipos");
 
     // TICKETS
@@ -123,10 +123,44 @@ cliente.connect(uri, (err, client) =>
         ,err => { if(err) console.log(err) }
     });
 
-    app.get("/customers/pack_superpack_avellaneda", (req, res) => {
+    app.get("/customers/pack_superpack_avellaneda", async (req, res) => {
+        resp = []
         result = customers.aggregate([ { $match: { "selected_plan": "super_pack", "contact_info.city_id": "AVELL" } }, 
-                                    { $project: { "_id": 1, "name": 1, "surname": 1, "personal_id": 1, correo_electronico: "$contact_info.email" } }])
-        res.json(result)
+                                    { $project: { "_id": 1, "name": 1, "surname": 1, "personal_id": 1, correo_electronico: "$contact_info.email" } }])         
+        await result.forEach(customer => {
+            console.log(`${customer._id}, ${customer.name}, ${customer.surname}, ${customer.personal_id}, ${customer.correo_electronico}`);
+            resp.push({
+                "_id": customer._id, 
+                "name": customer.name, 
+                "surname": customer.surname, 
+                "personal_id": customer.personal_id, 
+                "correo_electronico": customer.correo_electronico
+            })
+        });       
+        console.log(resp)
+        res.json(resp)
+        ,err => { if(err) console.log(err) }
+    });
+
+    app.get("/customers/clientes_centro_pasteur", async (req, res) => {
+        resp = []
+        centerData = centers.aggregate([{ $match: {name:"Pasteur"}},{ $project:{"coverage_area":1}}])
+        let type;
+        let coordinates;
+
+        await centerData.forEach(attribute => {
+            console.log(`${attribute.coverage_area.type} : ${attribute.coverage_area.coordinates} `);
+            type = attribute.coverage_area.type
+            coordinates = attribute.coverage_area.coordinates
+        });
+
+
+
+        customers.find({ geometry:{ $geoWithin:{ $geometry: { type: type, coordinates: [[[-51, -29], [-71, -29], [-71, -33], [-51, -33],[-51, -29]]] } } }})
+        result = customers.aggregate([ { $match: { "selected_plan": "super_pack", "contact_info.city_id": "AVELL" } }, 
+                                    { $project: { "_id": 1, "name": 1, "surname": 1, "personal_id": 1, correo_electronico: "$contact_info.email" } }])  
+
+        res.json({})
         ,err => { if(err) console.log(err) }
     });
 

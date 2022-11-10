@@ -1,5 +1,4 @@
 export default function Customer(props){
-    console.log(props)
 
     const { customers } = props;
 

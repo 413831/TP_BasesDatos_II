@@ -12,6 +12,7 @@ const GET_TICKETS_HIGH_PRIORITY_TECH = "tickets/high_priority_tech";
 const GET_TICKETS_HIGH_PRIORITY_VIEWS = "tickets/high_priority_views";
 const GET_TICKETS_LOW_PRIORITY = "tickets/low_priority";
 const GET_CUSTOMERS_AVELLANEDA_SUPERPACK = "customers/pack_superpack_avellaneda";
+const GET_CUSTOMERS_CENTRO_PASTEUR = "customers/clientes_centro_pasteur";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
   const [ticketsAltaPrioridadMasViews, setTicketsAltaPrioridadMasViews] = useState(null);
   const [ticketsBajaPrioridad, setTicketsBajaPrioridad] = useState(null);
   const [customersAvellanedaSuperPack, setCustomersAvellanedaSuperPack] = useState(null);
+  const [customersCentroPasteur, setCustomersCentroPasteur] = useState(null);
 
   // Request
   const getTickets = async () =>{
@@ -82,6 +84,12 @@ function App() {
     setCustomersAvellanedaSuperPack(data);
   }
  
+  const getCustomersCentroPasteur = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_CUSTOMERS_CENTRO_PASTEUR}`)
+    const data = await api.json();
+
+    setCustomersCentroPasteur(data);
+  }
 
   // UI
   return (
@@ -97,6 +105,7 @@ function App() {
       <div className="App-body">
       
         <table>
+          <tbody>
           <tr >
             <td className='Cell'>
               <button onClick={getTickets}  className="Button"><code>Todos los tickets: find()</code></button>
@@ -105,7 +114,7 @@ function App() {
              
               {tickets ? (
               <Ticket tickets={tickets}></Ticket>
-                ):   <textarea disabled="true" value={"..."}></textarea>}
+                ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
           <tr >
@@ -116,7 +125,7 @@ function App() {
              
               {ticketsFix ? (
               <Ticket tickets={ticketsFix}></Ticket>
-                ):   <textarea disabled="true" value={"..."}></textarea>}
+                ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
           <tr >
@@ -127,7 +136,7 @@ function App() {
              
               {ticketsServicios ? (
               <Ticket tickets={ticketsServicios}></Ticket>
-                ):   <textarea disabled="true" value={"..."}></textarea>}
+                ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
           <tr >
@@ -138,7 +147,7 @@ function App() {
              
               {ticketsAltaPrioridad ? (
               <Ticket tickets={ticketsAltaPrioridad}></Ticket>
-                ):   <textarea disabled="true" value={"..."}></textarea>}
+                ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
           <tr >
@@ -149,7 +158,7 @@ function App() {
              
               {ticketsAltaPrioridadTech ? (
               <Ticket tickets={ticketsAltaPrioridadTech}></Ticket>
-                ):   <textarea disabled="true" value={"..."}></textarea>}
+                ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
           <tr >
@@ -160,7 +169,7 @@ function App() {
              
               {ticketsAltaPrioridadMasViews ? (
               <Ticket tickets={ticketsAltaPrioridadMasViews}></Ticket>
-                ):   <textarea disabled="true" value={"..."}></textarea>}
+                ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
           <tr >
@@ -171,7 +180,7 @@ function App() {
              
               {ticketsBajaPrioridad ? (
               <Ticket tickets={ticketsBajaPrioridad}></Ticket>
-                ):   <textarea disabled="true" value={"..."}></textarea>}
+                ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
           <tr >
@@ -182,9 +191,21 @@ function App() {
              
               {customersAvellanedaSuperPack ? (
               <Customer customers={customersAvellanedaSuperPack}></Customer>
-                ):   <textarea disabled="true" value={"..."}></textarea>}
+                ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
+          <tr >
+            <td className='Cell'>
+              <button onClick={getCustomersCentroPasteur}  className="Button">Clientes dentro de area de cobertura del <code>Centro Pasteur</code></button>
+            </td>
+            <td className='Cell'>
+             
+              {customersCentroPasteur ? (
+              <Customer customers={customersCentroPasteur}></Customer>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+          </tbody>
         </table>
 
      
