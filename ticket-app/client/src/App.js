@@ -20,7 +20,7 @@ const GET_TICKETS_BY_CUSTOMER = "tickets/tickets_by_customer";
 const GET_CUSTOMERS_AVELLANEDA_SUPERPACK = "customers/pack_superpack_avellaneda";
 const GET_CUSTOMERS_CENTRO_PASTEUR = "customers/clientes_centro_pasteur";
 const GET_CENTERS_MORE_40_STAFF = "centers/more_than_40";
-const GET_CENTERS_LESS_10_STAFF = "centers/less_equal_than_10";
+const GET_CENTERS_LESS_30_STAFF = "centers/less_equal_than_30";
 
 function App() {
 
@@ -40,7 +40,7 @@ function App() {
   const [customersAvellanedaSuperPack, setCustomersAvellanedaSuperPack] = useState(null);
   const [customersCentroPasteur, setCustomersCentroPasteur] = useState(null);
   const [centersMore40Staff, setCentersMore40Staff] = useState(null);
-  const [centersLess10Staff, setCentersLess10Staff] = useState(null);
+  const [centersLess30Staff, setCentersLess30Staff] = useState(null);
 
   // Request
   const getTickets = async () =>{
@@ -148,11 +148,11 @@ function App() {
     setCentersMore40Staff(data);
   }
 
-  const getCentersLess10Staff = async () =>{
-    const api = await fetch(`http://localhost:3000/${GET_CENTERS_LESS_10_STAFF}`)
+  const getCentersLess30Staff = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_CENTERS_LESS_30_STAFF}`)
     const data = await api.json();
 
-    setCentersLess10Staff(data);
+    setCentersLess30Staff(data);
   }
 
   // UI
@@ -344,19 +344,18 @@ function App() {
 
           <tr >
             <td className='Cell'>
-              <button onClick={getCentersLess10Staff}  className="Button">Centros de atención con menos de 10 empleados</button>
+              <button onClick={getCentersLess30Staff}  className="Button">Centros de atención con menos de 30 empleados</button>
             </td>
             <td className='Cell'>
              
-              {centersLess10Staff ? (
-              <Center centers={centersLess10Staff}></Center>
+              {centersLess30Staff ? (
+              <Center centers={centersLess30Staff}></Center>
                 ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
           </tbody>
         </table>
 
-     
       </div>
     </div>
   );

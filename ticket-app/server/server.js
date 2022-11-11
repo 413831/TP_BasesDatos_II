@@ -153,7 +153,7 @@ cliente.connect(uri, (err, client) =>
     })
 
     app.get("/tickets/non_tech_valid_tickets", (req, res) => {
-        tickets.find({$not:[{current_area:{$eq:"servicio_tecnico"}},{state:{$eq:"discarded"}}]}).toArray(function (err, result) {
+        tickets.find({$and:[{current_area:{$not:{$eq:"servicio_tecnico"}}},{state:{$not:{$eq:"discarded"}}}]}).toArray(function (err, result) {
             if (err) {
                 res.send(err);
             } else {
@@ -256,14 +256,26 @@ cliente.connect(uri, (err, client) =>
     });
 
     app.get("/centers/more_than_40", (req, res) => {
-        result = centers.find({staff_counter:{$gt:40}})
-        res.json(result)
+        result = centers.find({staff_counter:{$gt:40}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
         ,err => { if(err) console.log(err) }
     });
 
-    app.get("/centers/less_equal_than_10", (req, res) => {
-        result = centers.find({staff_counter:{$lte:10}})
-        res.json(result)
+    app.get("/centers/less_equal_than_30", (req, res) => {
+        result = centers.find({staff_counter:{$lte:30}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
         ,err => { if(err) console.log(err) }
     });
 
