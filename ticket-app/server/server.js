@@ -164,6 +164,45 @@ cliente.connect(uri, (err, client) =>
         ,err => { if(err) console.log(err) }
     })
 
+    app.get("/tickets/tickets_by_customer", async (req, res) => {
+        resp = []
+        result = customers.aggregate([
+            {
+                $match:{ 
+                    "selected_plan": "normal"
+                }
+            },
+            {
+                $lookup:
+                {
+                    from:"tickets",
+                    localField:"personal_id",
+                    foreignField:"customer.personal_id",
+                    as:"ticket_list"
+                }
+            },
+            {
+                $project:
+                {
+                    name:1,
+                    surname:1,
+                    personal_id:1,
+                    selected_plan:1,
+                    "ticket_list.state":1,
+                    "ticket_list.title":1,
+                    "ticket_list.description":1
+                }
+            }
+        ])         
+        await result.forEach(ticket => {
+            console.log(`${ticket}`);
+            resp.push(ticket)
+        })
+        console.log(resp)
+        res.json(resp)       
+        ,err => { if(err) console.log(err) }
+    })
+
     app.get("/customers/pack_normal", (req, res) => {
         result = customers.count({selected_plan:"normal"})
         res.json(result)
