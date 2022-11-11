@@ -116,6 +116,54 @@ cliente.connect(uri, (err, client) =>
         ,err => { if(err) console.log(err) }
     })
 
+    app.get("/tickets/valid_tickets", (req, res) => {
+        tickets.find({state:{$ne:"discarded"}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
+    app.get("/tickets/closed_tickets", (req, res) => {
+        tickets.find({$or:[{state:{$eq:"resolved"}},{state:{$eq:"discarded"}}]}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
+    app.get("/tickets/active_tickets", (req, res) => {
+        tickets.find({$nor:[{state:{$eq:"resolved"}},{state:{$eq:"discarded"}}]}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
+    app.get("/tickets/non_tech_valid_tickets", (req, res) => {
+        tickets.find({$not:[{current_area:{$eq:"servicio_tecnico"}},{state:{$eq:"discarded"}}]}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+    
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
     app.get("/customers/pack_normal", (req, res) => {
         result = customers.count({selected_plan:"normal"})
         res.json(result)
@@ -153,9 +201,6 @@ cliente.connect(uri, (err, client) =>
             type = attribute.coverage_area.type
             coordinates = attribute.coverage_area.coordinates
             console.log(coordinates)
-        
-            
-    
         });   
         
 
@@ -168,6 +213,18 @@ cliente.connect(uri, (err, client) =>
             }
         })
 
+        ,err => { if(err) console.log(err) }
+    });
+
+    app.get("/centers/more_than_40", (req, res) => {
+        result = centers.find({staff_counter:{$gt:40}})
+        res.json(result)
+        ,err => { if(err) console.log(err) }
+    });
+
+    app.get("/centers/less_equal_than_10", (req, res) => {
+        result = centers.find({staff_counter:{$lte:10}})
+        res.json(result)
         ,err => { if(err) console.log(err) }
     });
 
