@@ -18,6 +18,8 @@ const GET_TICKETS_ACTIVE = "tickets/active_tickets";
 const GET_TICKETS_NON_TECH_VALID = "tickets/non_tech_valid_tickets";
 const GET_TICKETS_BY_CUSTOMER = "tickets/tickets_by_customer";
 const GET_TICKETS_EQUIPO = "tickets/tickets_equipo";
+const GET_TICKETS_DESCRIPTION = "tickets/type_description";
+const GET_TICKETS_ALL_CHANGE = "tickets/all_change_soporte";
 const GET_CUSTOMERS_AVELLANEDA_SUPERPACK = "customers/pack_superpack_avellaneda";
 const GET_CUSTOMERS_CENTRO_PASTEUR = "customers/clientes_centro_pasteur";
 const GET_CUSTOMERS_SERVICIO_ONDEMAND = "customers/on_demand";
@@ -40,6 +42,8 @@ function App() {
   const [ticketsNonTechValid, setTicketsNonTechValid] = useState(null);
   const [ticketsByCustomer, setTicketsByCustomer] = useState(null);
   const [ticketsEquipo, setTicketsEquipo] = useState(null);
+  const [ticketDescriptionType, setTicketsDescriptionType] = useState(null);
+  const [ticketChangeSoporte, setTicketsChangeSoporte] = useState(null);
   const [customersAvellanedaSuperPack, setCustomersAvellanedaSuperPack] = useState(null);
   const [customersCentroPasteur, setCustomersCentroPasteur] = useState(null);
   const [customersOnDemand, setCustomersOnDemand] = useState(null);
@@ -130,13 +134,26 @@ function App() {
 
     setTicketsByCustomer(data);
   }
-
   
   const getTicketsEquipo = async () =>{
     const api = await fetch(`http://localhost:3000/${GET_TICKETS_EQUIPO}`)
     const data = await api.json();
 
     setTicketsEquipo(data);
+  }
+
+  const getTicketsDescriptionType = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_TICKETS_DESCRIPTION}`)
+    const data = await api.json();
+
+    setTicketsDescriptionType(data);
+  }
+
+  const getTicketsChangeSoporte = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_TICKETS_ALL_CHANGE}`)
+    const data = await api.json();
+
+    setTicketsChangeSoporte(data);
   }
 
   const getCustomersAvellanedaSuperPack = async () =>{
@@ -334,6 +351,30 @@ function App() {
              
               {ticketsEquipo ? (
               <Ticket tickets={ticketsEquipo}></Ticket>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+
+          <tr >
+            <td className='Cell'>
+              <button onClick={getTicketsDescriptionType}  className="Button">Tickets con description de tipo string</button>
+            </td>
+            <td className='Cell'>
+             
+              {ticketDescriptionType ? (
+              <Ticket tickets={ticketDescriptionType}></Ticket>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+
+          <tr >
+            <td className='Cell'>
+              <button onClick={getTicketsChangeSoporte}  className="Button">Tickets con tag "change" y "soporte" ($all)</button>
+            </td>
+            <td className='Cell'>
+             
+              {ticketChangeSoporte ? (
+              <Ticket tickets={ticketChangeSoporte}></Ticket>
                 ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>

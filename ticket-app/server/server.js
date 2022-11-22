@@ -214,6 +214,29 @@ cliente.connect(uri, (err, client) =>
         ,err => { if(err) console.log(err) }
     })
 
+    app.get("/tickets/type_description", (req, res) => {
+        tickets.find({"description":{$type:"string"}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
+    app.get("/tickets/all_change_soporte", (req, res) => {
+        tickets.find({tags:{$all:["change","soporte"]}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
+
     app.get("/customers/pack_normal", (req, res) => {
         result = customers.count({selected_plan:"normal"})
         res.json(result)

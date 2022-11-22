@@ -50,9 +50,9 @@
     },
     {
         "state":"active",
-        "title":"Revisión de equipo",
-        "description":"Se requiere revisión de fallas de conexión en equipo instalado en domicilio",
-        "tags":["review","tech","soporte"],
+        "title":"Fallas en modem",
+        "description":"Se requiere cambio de modem",
+        "tags":["change","fix","soporte"],
         "priority": 1,
         "users_log":[{
             "name": "Pepito",
@@ -71,52 +71,5 @@
         "view_counter":13,
         "creation_date": "2020-05-18T14:10:30.000Z"
         
-    },
-    {
-        "state":"discarded",
-        "title":"Retiro de equipo por baja",
-        "description":"Se requiere retiro de equipo por baja solicitada por cliente",
-        "tags":["review","tech","servicios"],
-        "priority": 1,
-        "users_log":[{
-            "name": "Pepito",
-            "personal_id": "92543123"
-        },
-        {
-            "name": "Maria",
-            "personal_id": "33445432"
-        }],
-        "customer":{
-            "name":"Maria",
-            "surname":"Nieves",
-            "personal_id":"95666222",
-            "packs_extra":["sports","music","streaming"]
-        },
-        "current_area":"atencion_cliente",
-        "view_counter":5,
-        "creation_date": "2020-05-18T14:10:30.000Z"
-    },
-    {
-        "state":"active",
-        "title":"Cambio de plan",
-        "description":"Se requiere cambio de plan a pedido de cliente",
-        "tags":["review","customer","quote"],
-        "priority": 1,
-        "users_log":[{
-            "name": "Pepito",
-            "personal_id": "92543123"
-        },
-        {
-            "name": "Maria",
-            "personal_id": "33445432"
-        }],
-        "customer":{
-            "name":"Laura",
-            "surname":"Gomez",
-            "personal_id":"25666222"
-        },
-        "current_area":"atencion_cliente",
-        "view_counter":8,
-        "creation_date": "2020-05-18T14:10:30.000Z"
     }
 ]
