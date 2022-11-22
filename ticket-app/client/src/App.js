@@ -17,6 +17,7 @@ const GET_TICKETS_CLOSED = "tickets/closed_tickets";
 const GET_TICKETS_ACTIVE = "tickets/active_tickets";
 const GET_TICKETS_NON_TECH_VALID = "tickets/non_tech_valid_tickets";
 const GET_TICKETS_BY_CUSTOMER = "tickets/tickets_by_customer";
+const GET_TICKETS_EQUIPO = "tickets/tickets_equipo";
 const GET_CUSTOMERS_AVELLANEDA_SUPERPACK = "customers/pack_superpack_avellaneda";
 const GET_CUSTOMERS_CENTRO_PASTEUR = "customers/clientes_centro_pasteur";
 const GET_CUSTOMERS_SERVICIO_ONDEMAND = "customers/on_demand";
@@ -38,6 +39,7 @@ function App() {
   const [ticketsActive, setTicketsActive] = useState(null);
   const [ticketsNonTechValid, setTicketsNonTechValid] = useState(null);
   const [ticketsByCustomer, setTicketsByCustomer] = useState(null);
+  const [ticketsEquipo, setTicketsEquipo] = useState(null);
   const [customersAvellanedaSuperPack, setCustomersAvellanedaSuperPack] = useState(null);
   const [customersCentroPasteur, setCustomersCentroPasteur] = useState(null);
   const [customersOnDemand, setCustomersOnDemand] = useState(null);
@@ -127,6 +129,14 @@ function App() {
     const data = await api.json();
 
     setTicketsByCustomer(data);
+  }
+
+  
+  const getTicketsEquipo = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_TICKETS_EQUIPO}`)
+    const data = await api.json();
+
+    setTicketsEquipo(data);
   }
 
   const getCustomersAvellanedaSuperPack = async () =>{
@@ -312,6 +322,18 @@ function App() {
              
               {ticketsActive ? (
               <Ticket tickets={ticketsActive}></Ticket>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+
+          <tr >
+            <td className='Cell'>
+              <button onClick={getTicketsEquipo}  className="Button">Búsqueda de texto "equipo" en tickets</button>
+            </td>
+            <td className='Cell'>
+             
+              {ticketsEquipo ? (
+              <Ticket tickets={ticketsEquipo}></Ticket>
                 ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>

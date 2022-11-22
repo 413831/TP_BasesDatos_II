@@ -203,6 +203,17 @@ cliente.connect(uri, (err, client) =>
         ,err => { if(err) console.log(err) }
     })
 
+    app.get("/tickets/tickets_equipo", (req, res) => {
+        tickets.find({$text:{$search:"equipo"}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
     app.get("/customers/pack_normal", (req, res) => {
         result = customers.count({selected_plan:"normal"})
         res.json(result)
