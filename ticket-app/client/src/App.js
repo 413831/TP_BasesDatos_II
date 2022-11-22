@@ -19,6 +19,7 @@ const GET_TICKETS_NON_TECH_VALID = "tickets/non_tech_valid_tickets";
 const GET_TICKETS_BY_CUSTOMER = "tickets/tickets_by_customer";
 const GET_CUSTOMERS_AVELLANEDA_SUPERPACK = "customers/pack_superpack_avellaneda";
 const GET_CUSTOMERS_CENTRO_PASTEUR = "customers/clientes_centro_pasteur";
+const GET_CUSTOMERS_SERVICIO_ONDEMAND = "customers/on_demand";
 const GET_CENTERS_MORE_40_STAFF = "centers/more_than_40";
 const GET_CENTERS_LESS_30_STAFF = "centers/less_equal_than_30";
 
@@ -39,6 +40,7 @@ function App() {
   const [ticketsByCustomer, setTicketsByCustomer] = useState(null);
   const [customersAvellanedaSuperPack, setCustomersAvellanedaSuperPack] = useState(null);
   const [customersCentroPasteur, setCustomersCentroPasteur] = useState(null);
+  const [customersOnDemand, setCustomersOnDemand] = useState(null);
   const [centersMore40Staff, setCentersMore40Staff] = useState(null);
   const [centersLess30Staff, setCentersLess30Staff] = useState(null);
 
@@ -139,6 +141,13 @@ function App() {
     const data = await api.json();
 
     setCustomersCentroPasteur(data);
+  }
+
+  const getCustomersOnDemand = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_CUSTOMERS_SERVICIO_ONDEMAND}`)
+    const data = await api.json();
+
+    setCustomersOnDemand(data);
   }
 
   const getCentersMore40Staff = async () =>{
@@ -318,6 +327,19 @@ function App() {
                 ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
+
+          <tr >
+            <td className='Cell'>
+              <button onClick={getCustomersOnDemand}  className="Button">Clientes que hayan utilizado el servicio On Demand</button>
+            </td>
+            <td className='Cell'>
+             
+              {customersOnDemand ? (
+              <Customer customers={customersOnDemand}></Customer>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+
           <tr >
             <td className='Cell'>
               <button onClick={getCustomersCentroPasteur}  className="Button">Clientes dentro de area de cobertura del Centro Pasteur</button>

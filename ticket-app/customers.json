@@ -1,78 +1,81 @@
 [
     {
-        "name":"Fernando",
-        "surname":"Paredes",
-        "personal_id":"35666222",
+        "name":"Eugenia",
+        "surname":"Banegas",
+        "personal_id":"25666152",
         "date_of_birth":"12/03/1999",
         "contact_info":{
             "phone_number": 1665423454,
             "email": "mail1@mail.com",
             "city_id": "BA01",
-            "address_name": "Humboldt",
+            "address_name": "Uruguay",
             "address_number":2552
         },
         "location":{
             "type":"Point",
             "coordinates":[
-                -58.433658732818685,
-                -34.583381533448204
+                -58.433658732817685,
+                -34.583381533433204
             ]
         },
         "selected_plan":"normal",
         "packs_extra":["sports","music","arts"],
-        "subscription_date": "03/03/2022"
+        "subscription_date": "03/03/2022",
+        "servicio_on_demand": ["El Señor de los Anillos 2","Pulp Fiction"]
     },
     {
-        "name":"Manuel",
-        "surname":"Lopez",
-        "personal_id":"38666222",
-        "date_of_birth":"12/03/1993",
+        "name":"Ignacio",
+        "surname":"Moreno",
+        "personal_id":"43666222",
+        "date_of_birth":"12/03/1989",
         "contact_info":{
             "phone_number": 1665423454,
             "email": "mail2@mail.com",
             "city_id": "BA01",
-            "address_name": "Honduras",
-            "address_number":2554
+            "address_name": "Paraguay",
+            "address_number":255
 
         },
         "location":{
             "type":"Point",
             "coordinates":[
-                -58.42376258265965,
-                -34.593179988829505
+                -58.42376258267365,
+                -34.593179988829105
             ]
         },
         "selected_plan":"normal",
         "packs_extra":["sports","music","arts"],
-        "subscription_date": "03/05/2022"
+        "subscription_date": "03/05/2022",
+        "servicio_on_demand": ["The Hole","Middsomar"]
     },
     {
-        "name":"Maria",
-        "surname":"Gonzalez",
-        "personal_id":"32666222",
-        "date_of_birth":"25/06/1999",
+        "name":"Marta",
+        "surname":"Herrera",
+        "personal_id":"29666222",
+        "date_of_birth":"25/06/1979",
         "contact_info":{
             "phone_number": 1665423454,
-            "email": "mail3@mail.com",
-            "city_id": "AVELL",
-            "address_name": "Av.Belgrano",
+            "email": "mai10@mail.com",
+            "city_id": "BA01",
+            "address_name": "Av.Córdoba",
             "address_number":1232
         },
         "location":{
             "type":"Point",
             "coordinates":[
-                -58.36445130747077,
-                -34.6672500797407
+                -58.36445120747077,
+                -34.6672500597407
             ]
         },
         "selected_plan":"super_pack",
-        "subscription_date": "13/07/2022"
+        "subscription_date": "13/07/2022",
+        "servicio_on_demand": ["Tacones Lejanos","La Mala Educación"]
     },
     {
-        "name":"Maria",
-        "surname":"Nieves",
+        "name":"Iñaki",
+        "surname":"De Los Santos",
         "personal_id":"95666222",
-        "date_of_birth":"25/08/1997",
+        "date_of_birth":"25/08/1999",
         "contact_info":{
             "phone_number": 1665423454,
             "email": "mail4@mail.com",
@@ -90,29 +93,7 @@
         },
         "selected_plan":"super_pack",
         "packs_extra":["sports","music","streaming"],
-        "subscription_date": "04/03/2022"
-    },
-    {
-        "name":"Laura",
-        "surname":"Gomez",
-        "personal_id":"25666222",
-        "date_of_birth":"25/11/1996",
-        "contact_info":{
-            "phone_number": 1665423454,
-            "email": "mail5@mail.com",
-            "city_id": "BA01",
-            "address_name": "Cochabamba",
-            "address_number":354
-
-        },
-        "location":{
-            "type":"Point",
-            "coordinates":[
-                -58.38899585293524,
-                -34.62387050283458
-            ]
-        },
-        "selected_plan":"super_pack_full",
-        "subscription_date": "05/03/2022"
+        "subscription_date": "04/03/2022",
+        "servicio_on_demand": ["Intensamente","El Juego del miedo 4","John Wick 2"]
     }
 ]

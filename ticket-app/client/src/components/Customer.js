@@ -7,6 +7,7 @@ export default function Customer(props){
         <p>{JSON.stringify(props)}</p>
         {customers.map((customer,index)=>(
             <div>
+                <hr></hr>
                 <p><b>ID:</b> {customer.personal_id}</p>
                 <p><b>Nombre:</b> {customer.name}</p>
                 <p><b>Apellido:</b> {customer.surname}</p>

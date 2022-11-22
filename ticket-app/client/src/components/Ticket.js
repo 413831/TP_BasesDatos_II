@@ -8,6 +8,7 @@ export default function Ticket(props){
         <p>{JSON.stringify(props)}</p>
         {tickets.map((ticket,index)=>(
             <div>
+                <hr></hr>
                 <p><b>ID:</b> {ticket._id}</p>
                 <p><b>Title:</b> {ticket.title}</p>
                 <p><b>Description:</b> {ticket.description}</p>
