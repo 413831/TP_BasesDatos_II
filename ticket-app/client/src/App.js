@@ -20,6 +20,7 @@ const GET_TICKETS_BY_CUSTOMER = "tickets/tickets_by_customer";
 const GET_TICKETS_EQUIPO = "tickets/tickets_equipo";
 const GET_TICKETS_DESCRIPTION = "tickets/type_description";
 const GET_TICKETS_ALL_CHANGE = "tickets/all_change_soporte";
+const GET_TICKETS_BY_TAGS = "tickets/ticket_by_tags";
 const GET_CUSTOMERS_AVELLANEDA_SUPERPACK = "customers/pack_superpack_avellaneda";
 const GET_CUSTOMERS_CENTRO_PASTEUR = "customers/clientes_centro_pasteur";
 const GET_CUSTOMERS_SERVICIO_ONDEMAND = "customers/on_demand";
@@ -46,6 +47,7 @@ function App() {
   const [ticketsEquipo, setTicketsEquipo] = useState(null);
   const [ticketDescriptionType, setTicketsDescriptionType] = useState(null);
   const [ticketChangeSoporte, setTicketsChangeSoporte] = useState(null);
+  const [ticketByTags, setTicketsByTags] = useState(null);
   const [customersAvellanedaSuperPack, setCustomersAvellanedaSuperPack] = useState(null);
   const [customersCentroPasteur, setCustomersCentroPasteur] = useState(null);
   const [customersOnDemand, setCustomersOnDemand] = useState(null);
@@ -155,6 +157,13 @@ function App() {
 
   const getTicketsChangeSoporte = async () =>{
     const api = await fetch(`http://localhost:3000/${GET_TICKETS_ALL_CHANGE}`)
+    const data = await api.json();
+
+    setTicketsChangeSoporte(data);
+  }
+
+  const getTicketsByTags = async () =>{
+    const api = await fetch(`http://localhost:3000/${Get_TICKETS_B}`)
     const data = await api.json();
 
     setTicketsChangeSoporte(data);
@@ -393,6 +402,18 @@ function App() {
              
               {ticketChangeSoporte ? (
               <Ticket tickets={ticketChangeSoporte}></Ticket>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+
+          <tr >
+            <td className='Cell'>
+              <button onClick={getTicketsByTags}  className="Button">Cantidad de tickets de cada tag</button>
+            </td>
+            <td className='Cell'>
+             
+              {ticketByTags ? (
+              <Ticket tickets={ticketByTags}></Ticket>
                 ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
