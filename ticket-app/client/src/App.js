@@ -23,6 +23,8 @@ const GET_TICKETS_ALL_CHANGE = "tickets/all_change_soporte";
 const GET_CUSTOMERS_AVELLANEDA_SUPERPACK = "customers/pack_superpack_avellaneda";
 const GET_CUSTOMERS_CENTRO_PASTEUR = "customers/clientes_centro_pasteur";
 const GET_CUSTOMERS_SERVICIO_ONDEMAND = "customers/on_demand";
+const GET_CUSTOMERS_THREE_ONDEMAND = "customers/three_ondemand";
+const GET_CUSTOMERS_EXTRA_SPORTS = "customers/extra_sports";
 const GET_CENTERS_MORE_40_STAFF = "centers/more_than_40";
 const GET_CENTERS_LESS_30_STAFF = "centers/less_equal_than_30";
 
@@ -47,6 +49,8 @@ function App() {
   const [customersAvellanedaSuperPack, setCustomersAvellanedaSuperPack] = useState(null);
   const [customersCentroPasteur, setCustomersCentroPasteur] = useState(null);
   const [customersOnDemand, setCustomersOnDemand] = useState(null);
+  const [customersThreeOndemand, setCustomersThreeOndemand] = useState(null);
+  const [customersExtraSports, setCustomersExtraSports] = useState(null);
   const [centersMore40Staff, setCentersMore40Staff] = useState(null);
   const [centersLess30Staff, setCentersLess30Staff] = useState(null);
 
@@ -175,6 +179,20 @@ function App() {
     const data = await api.json();
 
     setCustomersOnDemand(data);
+  }
+
+  const getCustomersExtraSports = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_CUSTOMERS_EXTRA_SPORTS}`)
+    const data = await api.json();
+
+    setCustomersExtraSports(data);
+  }
+
+  const getCustomersThreeOndemand = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_CUSTOMERS_THREE_ONDEMAND}`)
+    const data = await api.json();
+
+    setCustomersThreeOndemand(data);
   }
 
   const getCentersMore40Staff = async () =>{
@@ -405,12 +423,36 @@ function App() {
 
           <tr >
             <td className='Cell'>
+              <button onClick={getCustomersThreeOndemand}  className="Button">Clientes que utilizaron el servicio On Demand 3 veces</button>
+            </td>
+            <td className='Cell'>
+             
+              {customersThreeOndemand ? (
+              <Customer customers={customersThreeOndemand}></Customer>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+
+          <tr >
+            <td className='Cell'>
               <button onClick={getCustomersCentroPasteur}  className="Button">Clientes dentro de area de cobertura del Centro Pasteur</button>
             </td>
             <td className='Cell'>
              
               {customersCentroPasteur ? (
               <Customer customers={customersCentroPasteur}></Customer>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+
+          <tr >
+            <td className='Cell'>
+              <button onClick={getCustomersExtraSports}  className="Button">Clientes que adquirieron el pack extra Sports</button>
+            </td>
+            <td className='Cell'>
+             
+              {customersExtraSports ? (
+              <Customer customers={customersExtraSports}></Customer>
                 ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>

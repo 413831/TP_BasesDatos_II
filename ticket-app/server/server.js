@@ -300,6 +300,28 @@ cliente.connect(uri, (err, client) =>
         ,err => { if(err) console.log(err) }
     });
 
+    app.get("/customers/extra_sports", (req, res) => {
+        result = customers.find({packs_extra:{$elemMatch:{$eq:"sports"}}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    });
+
+    app.get("/customers/three_ondemand", (req, res) => {
+        result = customers.find({servicio_on_demand:{$size:3}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    });
+
 
     app.get("/centers/more_than_40", (req, res) => {
         result = centers.find({staff_counter:{$gt:40}}).toArray(function (err, result) {
