@@ -247,6 +247,33 @@ cliente.connect(uri, (err, client) =>
         ,err => { if(err) console.log(err) }
     })
 
+    app.get("/tickets/promedio_vistas_area", async (req, res) => {
+        resp = []
+        result = tickets.aggregate([{$group:{_id:"$current_area",promedio_vistas: {$avg:"$view_counter"}}}])         
+
+        await result.forEach(ticket => {
+            console.log(`${ticket._id}, ${ticket.promedio_vistas}`);
+            resp.push({
+                "current_area": ticket._id, 
+                "promedio": ticket.promedio_vistas, 
+            })
+        });       
+        console.log(resp)
+        res.json(resp)
+        ,err => { if(err) console.log(err) }
+    })
+
+    app.get("/tickets/less_10_views", (req, res) => {
+        tickets.find({$expr: {$lt:["$view_counter",10]}}).toArray(function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(result);
+            }
+        })
+        ,err => { if(err) console.log(err) }
+    })
+
     app.get("/customers/pack_normal", (req, res) => {
         result = customers.count({selected_plan:"normal"})
         res.json(result)

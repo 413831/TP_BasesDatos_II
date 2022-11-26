@@ -21,6 +21,8 @@ const GET_TICKETS_EQUIPO = "tickets/tickets_equipo";
 const GET_TICKETS_DESCRIPTION = "tickets/type_description";
 const GET_TICKETS_ALL_CHANGE = "tickets/all_change_soporte";
 const GET_TICKETS_BY_TAGS = "tickets/ticket_by_tags";
+const GET_TICKETS_AVG_VIEWS = "tickets/promedio_vistas_area";
+const GET_TICKETS_LESS_10_VIEWS = "tickets/less_10_views";
 const GET_CUSTOMERS_AVELLANEDA_SUPERPACK = "customers/pack_superpack_avellaneda";
 const GET_CUSTOMERS_CENTRO_PASTEUR = "customers/clientes_centro_pasteur";
 const GET_CUSTOMERS_SERVICIO_ONDEMAND = "customers/on_demand";
@@ -48,6 +50,8 @@ function App() {
   const [ticketDescriptionType, setTicketsDescriptionType] = useState(null);
   const [ticketChangeSoporte, setTicketsChangeSoporte] = useState(null);
   const [ticketByTags, setTicketsByTags] = useState(null);
+  const [ticketAvgViews, setTicketsAvgViews] = useState(null);
+  const [ticketLess10Views, setTicketsLess10Views] = useState(null);
   const [customersAvellanedaSuperPack, setCustomersAvellanedaSuperPack] = useState(null);
   const [customersCentroPasteur, setCustomersCentroPasteur] = useState(null);
   const [customersOnDemand, setCustomersOnDemand] = useState(null);
@@ -163,10 +167,24 @@ function App() {
   }
 
   const getTicketsByTags = async () =>{
-    const api = await fetch(`http://localhost:3000/${Get_TICKETS_B}`)
+    const api = await fetch(`http://localhost:3000/${GET_TICKETS_BY_TAGS}`)
     const data = await api.json();
 
-    setTicketsChangeSoporte(data);
+    setTicketsByTags(data);
+  }
+
+  const getTicketsAvgViews = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_TICKETS_AVG_VIEWS}`)
+    const data = await api.json();
+
+    setTicketsAvgViews(data);
+  }
+
+  const getTicketsLess10Views = async () =>{
+    const api = await fetch(`http://localhost:3000/${GET_TICKETS_LESS_10_VIEWS}`)
+    const data = await api.json();
+
+    setTicketsLess10Views(data);
   }
 
   const getCustomersAvellanedaSuperPack = async () =>{
@@ -414,6 +432,30 @@ function App() {
              
               {ticketByTags ? (
               <Ticket tickets={ticketByTags}></Ticket>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+
+          <tr >
+            <td className='Cell'>
+              <button onClick={getTicketsAvgViews}  className="Button">Promedio de vistas por current area</button>
+            </td>
+            <td className='Cell'>
+             
+              {ticketAvgViews ? (
+              <Ticket tickets={ticketAvgViews}></Ticket>
+                ):   <textarea disabled={true} value={"..."}></textarea>}
+            </td>
+          </tr>
+          
+          <tr >
+            <td className='Cell'>
+              <button onClick={getTicketsLess10Views}  className="Button">Tickets con menos de 10 vistas</button>
+            </td>
+            <td className='Cell'>
+             
+              {ticketLess10Views ? (
+              <Ticket tickets={ticketLess10Views}></Ticket>
                 ):   <textarea disabled={true} value={"..."}></textarea>}
             </td>
           </tr>
